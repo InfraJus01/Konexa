@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konexa - Rede Conservadora de Empreendedorismo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #f4f0ea;
+      --bg-card: #ffffff;
+      --bg-input: #faf8f5;
+      --border-metallic: #d6ccb8;
+      --gold-primary: #8c7134;
+      --gold-light: #a6863f;
+      --gold-dark: #634f24;
+      --text-main: #2b2824;
+      --text-muted: #6e675f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      background-image: radial-gradient(#e8dfd1 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 50px;
+    }
+
+    header {
+      width: 100%;
+      background: rgba(244, 240, 234, 0.95);
+      border-bottom: 1px solid rgba(140, 113, 52, 0.2);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-top img {
+      height: 38px;
+      width: 38px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--gold-primary);
+    }
+
+    .brand-top-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-top-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+    }
+
+    .brand-top-sub {
+      font-size: 0.55rem;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: 100%;
+      max-width: 220px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-metallic);
+    }
+
+    .hero-desc {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 35px;
+      font-weight: 400;
+      max-width: 580px;
+    }
+
+    .card-section {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-metallic);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .card-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .step-badge {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--gold-primary);
+      letter-spacing: 1px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    label span {
+      color: var(--gold-primary);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-metallic);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 8px rgba(140, 113, 52, 0.15);
+      background: #fff;
+    }
+
+    select option {
+      background: #fff;
+      color: var(--text-main);
+    }
+
+    .file-upload-box {
+      border: 2px dashed var(--border-metallic);
+      border-radius: 8px;
+      padding: 25px;
+      text-align: center;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .file-upload-box:hover {
+      border-color: var(--gold-primary);
+      background: rgba(140, 113, 52, 0.03);
+    }
+
+    .upload-icon {
+      font-size: 2rem;
+      color: var(--gold-primary);
+      margin-bottom: 10px;
+    }
+
+    .file-preview {
+      margin-top: 15px;
+      max-width: 120px;
+      max-height: 120px;
+      border-radius: 8px;
+      display: none;
+      border: 1px solid var(--gold-primary);
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .checkbox-container input {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--gold-primary);
+      cursor: pointer;
+      margin-top: 2px;
+    }
+
+    .checkbox-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      box-shadow: 0 4px 15px rgba(140, 113, 52, 0.25);
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(140, 113, 52, 0.4);
+    }
+
+    .footer-brand {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-top">
+      <img src="IMG-20261026-WA0190.jpg" alt="Konexa Logo">
+      <div class="brand-top-text">
+        <span class="brand-top-title">KONEXA</span>
+        <span class="brand-top-sub">Conexões e Negócios</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <div class="hero-logo">
+      <img src="IMG-20261026-WA0190.jpg" alt="Konexa Marca Oficial">
+    </div>
+
+    <p class="hero-desc">
+      Preencha os dados abaixo para submeter sua empresa à apreciação do conselho da rede. 
+      Todos os membros aprovados integram nosso ecossistema e catálogo exclusivo de negócios.
+    </p>
+
+    <form id="konexaForm" onsubmit="handleSubmit(event)">
+      
+      <!-- SEÇÃO 01 -->
+      <div class="card-section">
+        <div class="step-header">
+          <div class="step-badge">01</div>
+          <div class="step-title">DADOS DA EMPRESA</div>
+        </div>
+
+        <div class="form-group">
+          <label>Nome da Empresa <span>*</span></label>
+          <input type="text" id="nomeEmpresa" placeholder="Ex: Santos & Assis Engenharia" required>
+        </div>
+
+        <div class="form-group">
+          <label>Segmento / Ramo <span>*</span></label>
+          <select id="segmento" required>
+            <option value="">Selecione o segmento...</option>
+            <option value="Agronegócio & Campo">Agronegócio & Campo</option>
+            <option value="Construção & Engenharia">Construção & Engenharia</option>
+            <option value="Direito & Consultoria">Direito & Consultoria</option>
+            <option value="Saúde & Medicina">Saúde & Medicina</option>
+            <option value="Tecnologia & Serviços">Tecnologia & Serviços</option>
+            <option value="Comércio & Varejo">Comércio & Varejo</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Bairro / Cidade <span>*</span></label>
+          <input type="text" id="bairro" placeholder="Ex: Centro - Dourado/SP" required>
+        </div>
+
+        <div class="form-group">
+          <label>O que a empresa faz <span>*</span></label>
+          <textarea id="descricao" rows="4" maxlength="400" placeholder="Descreva os produtos, serviços e diferenciais da sua empresa..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>WhatsApp da Empresa <span>*</span></label>
+          <input type="tel" id="whatsapp" placeholder="(00) 00000-0000" required>
+        </div>
+
+        <div class="form-group">
+          <label>Instagram (Opcional)</label>
+          <input type="text" id="instagram" placeholder="@suaempresa">
+        </div>
+
+        <div class="form-group">
+          <label>Logotipo da Empresa (Opcional)</label>
+          <div class="file-upload-box" onclick="document.getElementById('logoFile').click()">
+            <div class="upload-icon">📷</div>
+            <div>Clique para selecionar a imagem do seu logo</div>
+            <input type="file" id="logoFile" accept="image/*" style="display:none;" onchange="previewImage(event)">
+            <img id="imgPreview" class="file-preview" alt="Prévia">
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 02 -->
+      <div class="card-section">
+        <div class="step-header">
+          <div class="step-badge">02</div>
+          <div class="step-title">CONTATO DO RESPONSÁVEL</div>
+        </div>
+
+        <div class="form-group">
+          <label>Seu Nome Completo <span>*</span></label>
+          <input type="text" id="nomeResponsavel" placeholder="Ex: Dr. Roberto Santos" required>
+        </div>
+
+        <div class="form-group">
+          <label>Seu E-mail <span>*</span></label>
+          <input type="email" id="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Quem indicou a rede? (Opcional)</label>
+          <input type="text" id="indicacao" placeholder="Nome de quem indicou ou grupo social">
+        </div>
+      </div>
+
+      <!-- SEÇÃO 03 -->
+      <div class="card-section">
+        <div class="step-header">
+          <div class="step-badge">03</div>
+          <div class="step-title">AUTORIZAÇÃO E TERMOS</div>
+        </div>
+
+        <div class="checkbox-container">
+          <input type="checkbox" id="termo" required>
+          <div class="checkbox-text">
+            Declaro ser o responsável por esta empresa e autorizo a análise do cadastro pela equipe da <strong>Konexa</strong> para posterior inclusão no catálogo oficial da rede.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">ENVIAR PARA APROVAÇÃO</button>
+
+    </form>
+
+    <div class="footer-brand">
+      © 2026 Konexa - Todos os direitos reservados.
+    </div>
+
+  </div>
+
+  <script>
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = function() {
+        const output = document.getElementById('imgPreview');
+        output.src = reader.result;
+        output.style.display = 'block';
+      };
+      if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      
+      const empresa = document.getElementById('nomeEmpresa').value;
+      const segmento = document.getElementById('segmento').value;
+      const responsavel = document.getElementById('nomeResponsavel').value;
+      const whats = document.getElementById('whatsapp').value;
+      
+      const mensagem = `*NOVO CADASTRO KONEXA*%0A%0A` +
+        `*Empresa:* ${empresa}%0A` +
+        `*Segmento:* ${segmento}%0A` +
+        `*Responsável:* ${responsavel}%0A` +
+        `*WhatsApp:* ${whats}%0A%0A` +
+        `_Aguardando validação para o catálogo._`;
+
+      alert('Cadastro enviado com sucesso! Você será redirecionado para o WhatsApp da curadoria.');
+      window.location.href = `https://wa.me/?text=${mensagem}`;
+    }
+  </script>
+</body>
+  </html>
+  
